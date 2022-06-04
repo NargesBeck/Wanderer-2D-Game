@@ -21,4 +21,9 @@ Implementation (Classes discussed alphabetically):<br/>
 3. Level Manager: Adds itself to 2 actions on Player.cs, where both refer to the same method with a bool parameter. Lambda was used to make this easier.
 4. Player: Has 3 actions in total (OnBeingDamaged, OnLevelWon, OnLevelLost). Disables damage detector for half a second to give player time to flee (with a mini coroutine). This is where collision On Trigger is detected.
 5. Player Movement Controller: could be merged with the Player class, however, I personally prefer to not have one class do more than one task. This code is mapped into arrowkeys. If you don't want to have the player rotate, apply line #13 to Translate and you'd be good to go.
-6. UI Manager: 
+6. UI Manager: Also added to the damage action on Player. The rest is straight-forward.
+
+<br/><br/>
+Final notes:<br/>
+1. Almost all classes have some version of Singleton implemented.
+2. The only art file in this project is the sprite of the player and I drew it on MS Paint. That's why it's not transparent, and i did a trick to visually hide it. Don't tell anyone. :)
