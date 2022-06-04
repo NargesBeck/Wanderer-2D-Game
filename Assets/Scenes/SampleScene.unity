@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 314931435}
   - component: {fileID: 314931434}
   - component: {fileID: 314931436}
+  - component: {fileID: 314931438}
   - component: {fileID: 314931437}
   m_Layer: 0
   m_Name: Player
@@ -776,8 +777,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead51adab006bf541b1ae88c5f3e0b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &314931437
-PolygonCollider2D:
+--- !u!61 &314931437
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -786,7 +787,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -799,14 +800,22 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.035324454, y: 1.79}
-      - {x: -1.9151933, y: -0.66214967}
-      - {x: -0.74218476, y: -0.9864998}
-      - {x: 0.004482031, y: -1.8032687}
-      - {x: 0.7970835, y: -1.010829}
-      - {x: 1.9549999, y: -0.65146446}
+  serializedVersion: 2
+  m_Size: {x: 3.91, y: 3.58}
+  m_EdgeRadius: 0
+--- !u!114 &314931438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314931433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339b3a9a66975c44092332a87d69fc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &315648147
 PrefabInstance:
   m_ObjectHideFlags: 0
