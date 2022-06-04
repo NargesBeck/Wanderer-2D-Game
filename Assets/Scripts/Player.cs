@@ -17,14 +17,24 @@ public class Player : MonoBehaviour
 
     public int health { get; private set; }
 
+    public bool canMove
+    {
+        get
+        {
+            return canBeDamaged;
+        }
+    }
+
     private enum Damage
     {
-        BadStuff = 30, Walls = 5
+        BadStuff = 30, Walls = 100
     }
 
     private bool canBeDamaged = true;
 
     public Action OnBeingDamaged;
+    public Action OnLevelWon;
+    public Action OnLevelLost;
 
     private void Awake()
     {
@@ -37,6 +47,9 @@ public class Player : MonoBehaviour
             CauseDamage(Damage.BadStuff);
         else if (collision.tag == "Walls")
             CauseDamage(Damage.Walls);
+        else if (collision.tag == "FinishLine")
+            if (OnLevelWon != null)
+                OnLevelWon();
     }
 
     private void CauseDamage(Damage damage)
@@ -49,6 +62,10 @@ public class Player : MonoBehaviour
 
         if (OnBeingDamaged != null)
             OnBeingDamaged();
+
+        if (DidPlayerLose() && OnLevelLost != null)
+            OnLevelLost();
+
         StartCoroutine(PostDamageImmortality());
     }
 
@@ -56,5 +73,10 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         canBeDamaged = true;
+    }
+
+    private bool DidPlayerLose()
+    {
+        return health <= 0;
     }
 }

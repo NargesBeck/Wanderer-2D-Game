@@ -30,6 +30,6 @@ public class CameraMovementController : MonoBehaviour
             return;
 
         Vector3 dir = PlayerTransform.position - myPosition;
-        transform.Translate(dir * 0.15f * Time.deltaTime);
+        transform.Translate(dir * 0.25f * Time.deltaTime);
     }
 }
