@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -2369214531756263503}
   m_Layer: 0
   m_Name: CellB
-  m_TagString: Untagged
+  m_TagString: BadStuff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

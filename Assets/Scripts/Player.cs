@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,11 +15,46 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int health = 100;
+    public int health { get; private set; }
 
+    private enum Damage
+    {
+        BadStuff = 30, Walls = 5
+    }
+
+    private bool canBeDamaged = true;
+
+    public Action OnBeingDamaged;
+
+    private void Awake()
+    {
+        health = 100;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger...");
+        if (collision.tag == "BadStuff")
+            CauseDamage(Damage.BadStuff);
+        else if (collision.tag == "Walls")
+            CauseDamage(Damage.Walls);
+    }
+
+    private void CauseDamage(Damage damage)
+    {
+        if (!canBeDamaged)
+            return;
+
+        canBeDamaged = false;
+        health -= (int)damage;
+
+        if (OnBeingDamaged != null)
+            OnBeingDamaged();
+        StartCoroutine(PostDamageImmortality());
+    }
+
+    private IEnumerator PostDamageImmortality()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canBeDamaged = true;
     }
 }
