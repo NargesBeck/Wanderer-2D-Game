@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private static Player player;
+    public static Player Instance
+    {
+        get
+        {
+            if (player == null)
+                player = FindObjectOfType<Player>();
+            return player;
+        }
+    }
+
     public int health = 100;
 
 
